@@ -70,6 +70,9 @@ mostrar_menu() {
   echo "-------------------"
 }
 
+# Importa las funciones de simulación
+source funciones_hacking.sh
+
 # Función para ejecutar la acción seleccionada
 ejecutar_accion() {
   case $1 in
@@ -92,8 +95,6 @@ ejecutar_accion() {
   esac
 }
 
-# Importa las funciones de simulación
-source funciones_hacking.sh
 
 # Bucle principal
 
