@@ -25,13 +25,41 @@ sql="💉"
 social="👤"
 cifrado="🔐"
 
+# Imágenes
+skull="
+ 💀💀💀
+  💀💀💀
+   💀💀💀
+"
+hacker="
+  .-----.
+ /     \
+| () () |
+ \  ^  /
+  `-----'
+"
+loading="
+  [-------]
+  [##-----]
+  [####---]
+  [######-]
+  [########]
+"
+
+
 # Variables globales
 usuario_actual=""
 
 # Función para mostrar el menú de inicio de sesión
 mostrar_login() {
   clear
-  echo -e "${green}Simulador de Hacking para WSL${reset}"
+  echo -e "${green}
+  .-----.
+ /     \
+| () () |
+ \  ^  /
+  `-----'
+  Simulador de Hacking para WSL${reset}"
   echo "----------------------------------"
   echo ""
   read -p "Nombre de usuario: " usuario
@@ -39,6 +67,12 @@ mostrar_login() {
   echo ""
 
   # Simulación de verificación de credenciales (siempre será exitoso)
+  sleep 1
+  echo -ne "${yellow}Verificando...${reset}\r"
+  sleep 1
+  echo -ne "${yellow}Verificando..${reset}\r"
+  sleep 1
+  echo -ne "${yellow}Verificando.${reset}\r"
   sleep 1
   echo -e "${green}Inicio de sesión exitoso.${reset}"
   usuario_actual=$usuario
@@ -48,7 +82,13 @@ mostrar_login() {
 # Función para mostrar el menú principal
 mostrar_menu() {
   clear
-  echo -e "${green}Simulador de Hacking para WSL${reset}"
+  echo -e "${green}
+  .-----.
+ /     \
+| () () |
+ \  ^  /
+  `-----'
+  Simulador de Hacking para WSL${reset}"
   echo "----------------------------------"
   echo "Usuario actual: ${cyan}$usuario_actual${reset}"
   echo "-------------------"
@@ -66,6 +106,7 @@ mostrar_menu() {
   echo "12. ${sql} Inyección SQL (Simulado)"
   echo "13. ${social} Ingeniería social (Simulado)"
   echo "14. ${cifrado} Cifrar archivos (Simulado)"
+  echo "15. ${skull} Crackear contraseña (Simulado)" 
   echo "0.  Salir"
   echo "-------------------"
 }
@@ -87,6 +128,7 @@ ejecutar_accion() {
     12) inyeccion_sql ;;
     13) ingenieria_social ;;
     14) cifrar_archivos ;;
+    15) crackear_contrasena ;; # Nueva opción
     0)  echo -e "${red}Saliendo del simulador...${reset}" ;;
     *)  echo -e "${red}Opción inválida.${reset}" ;;
   esac
@@ -263,6 +305,12 @@ hackear_wifi() {
     2) echo "  Realizando ataque Man-in-the-Middle..." ;;
   esac
   sleep 2
+  echo -ne "${yellow} ${loading} ${reset}\r"
+  sleep 1
+  echo -ne "${yellow} ${loading} ${reset}\r"
+  sleep 1
+  echo -ne "${yellow} ${loading} ${reset}\r"
+  sleep 1
   echo "  Obteniendo contraseña de la red..."
   sleep 1
   echo -e "${green} ${wifi} Contraseña de la red: ${cyan}W1f1S3gur@${reset}"
@@ -330,6 +378,29 @@ cifrar_archivos() {
   echo "  Cifrando archivos..."
   sleep 2
   echo -e "${purple} ${cifrado} Archivos cifrados (simulado).${reset}"
+}
+
+crackear_contrasena() { 
+  echo -e "${red} ${skull} Crackear contraseña (Simulado) ${reset}"
+  echo ""
+  # Simulación de crackeo de contraseña con fuerza bruta
+  echo "  Iniciando ataque de fuerza bruta..."
+  sleep 1
+  echo "  Probando combinaciones de caracteres..."
+  sleep 2
+  echo -ne "${red} ${loading} ${reset}\r"
+  sleep 1
+  echo -ne "${red} ${loading} ${reset}\r"
+  sleep 1
+  echo -ne "${red} ${loading} ${reset}\r"
+  sleep 1
+  echo ""
+  resultado=$((RANDOM % 2))
+  if [[ $resultado == 0 ]]; then
+    echo -e "${green} ${skull} Contraseña crackeada: ${cyan}S3cr3t0!${reset}"
+  else
+    echo -e "${red} ${skull} No se pudo crackear la contraseña.${reset}"
+  fi
 }
 
 # Bucle principal
