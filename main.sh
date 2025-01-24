@@ -381,8 +381,68 @@ inyeccion_sql() {
 }
 
 ingenieria_social() {
-  echo -e "${yellow} <span class="math-inline">\{social\} Ingeniería social\.\.\.</span>{reset}"
+  echo -e "${yellow} ${social} Ingeniería social...${reset}"
   echo ""
   # Simulación de ingeniería social con diferentes técnicas y detalles
   tecnica=$((RANDOM % 3))
   case $tecnica in
+    0) echo "  Enviando correo electrónico con enlace malicioso..." 
+       sleep 1
+       echo "  [${green}OK${reset}]  Correo electrónico enviado."
+       sleep 1
+       echo "  Esperando que la víctima haga clic en el enlace..." 
+       ;;
+    1) echo "  Creando perfil falso en redes sociales..." 
+       sleep 1
+       echo "  [${green}OK${reset}]  Perfil falso creado."
+       sleep 1
+       echo "  Agregando amigos y publicando contenido..."
+       ;;
+    2) echo "  Haciéndose pasar por personal de soporte técnico..." 
+       sleep 1
+       echo "  [${green}OK${reset}]  Llamada telefónica realizada."
+       sleep 1
+       echo "  Solicitando información confidencial..." 
+       ;;
+  esac
+  sleep 2
+  echo "  [${green}OK${reset}]  Información confidencial obtenida."
+  sleep 1
+  echo -e "${yellow} ${social} Ingeniería social exitosa.${reset}"
+}
+
+cifrar_archivos() {
+  echo -e "${purple} ${cifrado} Cifrando archivos...${reset}"
+  echo ""
+  # Simulación de cifrado de archivos con detalles y animación
+  echo "  Seleccionando archivos a cifrar..."
+  sleep 1
+  echo "  [${green}OK${reset}]  Archivos seleccionados."
+  sleep 1
+  echo "  Generando clave de cifrado..."
+  sleep 1
+  echo "  Cifrando archivos..."
+  local cargando=("." "..")
+  for i in {1..50}; do
+    echo -ne "  Cifrando archivos... ${cargando[$((i % 2))]}  \r"
+    sleep 0.1
+  done
+  echo ""
+  echo -e "${purple} ${cifrado} Archivos cifrados.${reset}"
+}
+
+# Bucle principal
+
+mostrar_login
+
+while true; do
+  mostrar_menu
+  read -p "Selecciona una opción: " opcion
+
+  if [[ $opcion == 0 ]]; then
+    break
+  fi
+
+  ejecutar_accion $opcion
+  read -p "Presiona Enter para continuar..."
+done
