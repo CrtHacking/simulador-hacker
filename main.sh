@@ -128,7 +128,7 @@ ejecutar_accion() {
     12) inyeccion_sql ;;
     13) ingenieria_social ;;
     14) cifrar_archivos ;;
-    15) crackear_contrasena ;; # Nueva opción
+    15) crackear_contrasena ;;
     0)  echo -e "${red}Saliendo del simulador...${reset}" ;;
     *)  echo -e "${red}Opción inválida.${reset}" ;;
   esac
