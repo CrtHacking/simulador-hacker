@@ -9,15 +9,22 @@ purple="\e[35m"
 cyan="\e[36m"
 reset="\e[0m"
 
+# Iconos
+escaner="🔎"
+diccionario="📖"
+exploit="💥"
+privilegios="⬆️"
+ocultar="🕵️"
+
 # Función para mostrar el menú
 mostrar_menu() {
   echo -e "${cyan}Menú de opciones${reset}"
   echo "-------------------"
-  echo "1. Escanear puertos"
-  echo "2. Ataque de diccionario"
-  echo "3. Explotar vulnerabilidad"
-  echo "4. Escalar privilegios"
-  echo "5. Ocultar rastro"
+  echo "1. ${escaner} Escanear puertos"
+  echo "2. ${diccionario} Ataque de diccionario"
+  echo "3. ${exploit} Explotar vulnerabilidad"
+  echo "4. ${privilegios} Escalar privilegios"
+  echo "5. ${ocultar} Ocultar rastro"
   echo "0. Salir"
   echo "-------------------"
 }
@@ -37,33 +44,56 @@ ejecutar_accion() {
 
 # Funciones para simular las acciones de hacking
 escanear_puertos() {
-  echo -e "${green}Escaneando puertos...${reset}"
-  # Aquí puedes usar comandos como nmap para simular el escaneo
-  # o generar resultados aleatorios
+  echo -e "${green} ${escaner} Escaneando puertos...${reset}"
+  echo ""
+  # Simulación de escaneo de puertos
+  for i in {1..10}; do
+    puerto=$((RANDOM % 65535 + 1))
+    estado=$((RANDOM % 2))
+    if [[ $estado == 0 ]]; then
+      echo -e "  ${yellow}Puerto $puerto:${reset} ${red}Cerrado${reset}"
+    else
+      echo -e "  ${yellow}Puerto $puerto:${reset} ${green}Abierto${reset}"
+    fi
+    sleep 0.1
+  done
+  echo ""
+  echo -e "${green} ${escaner} Escaneo completado.${reset}"
 }
 
 ataque_diccionario() {
-  echo -e "${yellow}Realizando ataque de diccionario...${reset}"
-  # Aquí puedes simular un ataque de diccionario con herramientas como hydra
-  # o generar resultados aleatorios
+  echo -e "${yellow} ${diccionario} Realizando ataque de diccionario...${reset}"
+  echo ""
+  # Simulación de ataque de diccionario
+  for i in {1..5}; do
+    usuario=$(cat /usr/share/dict/words | shuf -n 1)
+    contrasena=$(cat /usr/share/dict/words | shuf -n 1)
+    echo -e "  Probando usuario: ${cyan}$usuario${reset} con contraseña: ${cyan}$contrasena${reset}"
+    sleep 0.2
+  done
+  echo ""
+  echo -e "${red} ${diccionario} Ataque fallido.${reset}"
 }
 
 explotar_vulnerabilidad() {
-  echo -e "${red}Explotando vulnerabilidad...${reset}"
-  # Aquí puedes simular la explotación de una vulnerabilidad
-  # o generar resultados aleatorios
+  echo -e "${red} ${exploit} Explotando vulnerabilidad...${reset}"
+  echo ""
+  sleep 1
+  echo -e "${red} ${exploit} Vulnerabilidad explotada con éxito.${reset}"
 }
 
 escalar_privilegios() {
-  echo -e "${purple}Escalando privilegios...${reset}"
-  # Aquí puedes simular la escalada de privilegios
-  # o generar resultados aleatorios
+  echo -e "${purple} ${privilegios} Escalando privilegios...${reset}"
+  echo ""
+  sleep 1
+  echo -e "${purple} ${privilegios} Privilegios escalados con éxito.${reset}"
 }
 
 ocultar_rastro() {
-  echo -e "${blue}Ocultando rastro...${reset}"
-  # Aquí puedes simular la ocultación de rastro
-  # o generar resultados aleatorios
+  echo -e "${blue} ${ocultar} Ocultando rastro...${reset}"
+  echo ""
+  sleep 1
+  echo -e "${blue} ${ocultar} Rastro ocultado con éxito.${reset}"
 }
 
 # Bucle principal
