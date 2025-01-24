@@ -28,36 +28,10 @@ cifrado="🔐"
 # Variables globales
 usuario_actual=""
 
-# Función para mostrar una calavera con símbolos
-mostrar_calavera() {
-  echo -e "${red}"
-  echo "       _.--""--._"
-  echo "     .'          `."
-  echo "    /   O      O   \"
-  echo "   |    \  ||  /    |"
-  echo "   \     `--'     /"
-  echo "    `._______.'"
-  echo -e "${reset}"
-}
-
-# Función para mostrar una animación de escaneo
-mostrar_animacion_escaneo() {
-  local cargando=("-" "\\" "|" "/")
-  for i in {1..20}; do
-    echo -ne "  <span class="math-inline">\{cargando\[</span>((i % 4))]} Escaneando...\r"
-    sleep 0.1
-  done
-}
-
-# Función para generar una contraseña aleatoria
-generar_contrasena() {
-  echo <span class="math-inline">\(cat /dev/urandom \| tr \-dc 'a\-zA\-Z0\-9\-\_\!@\#</span>%^&*()_+~`|}{[]\:;?><,./-=' | fold -w 16 | head -n 1)
-}
-
 # Función para mostrar el menú de inicio de sesión
 mostrar_login() {
   clear
-  echo -e "<span class="math-inline">\{green\}Simulador de Hacking para WSL</span>{reset}"
+  echo -e "${green}Simulador de Hacking para WSL${reset}"
   echo "----------------------------------"
   echo ""
   read -p "Nombre de usuario: " usuario
@@ -66,16 +40,17 @@ mostrar_login() {
 
   # Simulación de verificación de credenciales (siempre será exitoso)
   sleep 1
-  echo -e "<span class="math-inline">\{green\}Inicio de sesión exitoso\.</span>{reset}"
-  usuario_actual=<span class="math-inline">usuario
-sleep 1
-\}
-\# Función para mostrar el menú principal
-mostrar\_menu\(\) \{
-clear
-echo \-e "</span>{green}Simulador de Hacking para WSL${reset}"
+  echo -e "${green}Inicio de sesión exitoso.${reset}"
+  usuario_actual=$usuario
+  sleep 1
+}
+
+# Función para mostrar el menú principal
+mostrar_menu() {
+  clear
+  echo -e "${green}Simulador de Hacking para WSL${reset}"
   echo "----------------------------------"
-  echo "Usuario actual: ${cyan}<span class="math-inline">usuario\_actual</span>{reset}"
+  echo "Usuario actual: ${cyan}$usuario_actual${reset}"
   echo "-------------------"
   echo "1.  ${escaner} Escanear puertos"
   echo "2.  ${diccionario} Ataque de diccionario"
@@ -83,163 +58,133 @@ echo \-e "</span>{green}Simulador de Hacking para WSL${reset}"
   echo "4.  ${privilegios} Escalar privilegios"
   echo "5.  ${ocultar} Ocultar rastro"
   echo "6.  ${info} Obtener información del sistema"
-  echo "7.  ${ddos} Ataque DDoS"
-  echo "8.  ${keylogger} Instalar keylogger"
-  echo "9.  ${phishing} Crear página de phishing"
-  echo "10. ${wifi} Hackear red WiFi"
-  echo "11. ${malware} Crear malware"
-  echo "12. ${sql} Inyección SQL"
-  echo "13. ${social} Ingeniería social"
-  echo "14. ${cifrado} Cifrar archivos"
+  echo "7.  ${ddos} Ataque DDoS (Simulado)"
+  echo "8.  ${keylogger} Instalar keylogger (Simulado)"
+  echo "9.  ${phishing} Crear página de phishing (Simulado)"
+  echo "10. ${wifi} Hackear red WiFi (Simulado)"
+  echo "11. ${malware} Crear malware (Simulado)"
+  echo "12. ${sql} Inyección SQL (Simulado)"
+  echo "13. ${social} Ingeniería social (Simulado)"
+  echo "14. ${cifrado} Cifrar archivos (Simulado)"
   echo "0.  Salir"
   echo "-------------------"
 }
 
 # Función para ejecutar la acción seleccionada
 ejecutar_accion() {
-  case <span class="math-inline">1 in
-1\)  escanear\_puertos ;;
-2\)  ataque\_diccionario ;;
-3\)  explotar\_vulnerabilidad ;;
-4\)  escalar\_privilegios ;;
-5\)  ocultar\_rastro ;;
-6\)  obtener\_info\_sistema ;;
-7\)  ataque\_ddos ;;
-8\)  instalar\_keylogger ;;
-9\)  crear\_pagina\_phishing ;;
-10\) hackear\_wifi ;;
-11\) crear\_malware ;;
-12\) inyeccion\_sql ;;
-13\) ingenieria\_social ;;
-14\) cifrar\_archivos ;;
-0\)  echo \-e "</span>{red}Saliendo del simulador...<span class="math-inline">\{reset\}" ;;
-\*\)  echo \-e "</span>{red}Opción inválida.<span class="math-inline">\{reset\}" ;;
-esac
-\}
-\# Funciones para simular las acciones de hacking
-escanear\_puertos\(\) \{
-echo \-e "</span>{green} <span class="math-inline">\{escaner\} Escaneando puertos\.\.\.</span>{reset}"
+  case $1 in
+    1)  escanear_puertos ;;
+    2)  ataque_diccionario ;;
+    3)  explotar_vulnerabilidad ;;
+    4)  escalar_privilegios ;;
+    5)  ocultar_rastro ;;
+    6)  obtener_info_sistema ;;
+    7)  ataque_ddos ;;
+    8)  instalar_keylogger ;;
+    9)  crear_pagina_phishing ;;
+    10) hackear_wifi ;;
+    11) crear_malware ;;
+    12) inyeccion_sql ;;
+    13) ingenieria_social ;;
+    14) cifrar_archivos ;;
+    0)  echo -e "${red}Saliendo del simulador...${reset}" ;;
+    *)  echo -e "${red}Opción inválida.${reset}" ;;
+  esac
+}
+
+# Funciones para simular las acciones de hacking
+
+escanear_puertos() {
+  echo -e "${green} ${escaner} Escaneando puertos...${reset}"
   echo ""
-  mostrar_animacion_escaneo
-  echo ""
-  # Simulación de escaneo de puertos con detalles, barra de progreso y animación
+  # Simulación de escaneo de puertos con detalles y barra de progreso
   for i in {1..20}; do
-    puerto=<span class="math-inline">\(\(RANDOM % 65535 \+ 1\)\)
-estado\=</span>((RANDOM % 4))
+    puerto=$((RANDOM % 65535 + 1))
+    estado=$((RANDOM % 4))
     case $estado in
-      0) echo -e "  ${yellow}Puerto <span class="math-inline">puerto\:</span>{reset} <span class="math-inline">\{red\}Cerrado</span>{reset}" ;;
-      1) echo -e "  ${yellow}Puerto <span class="math-inline">puerto\:</span>{reset} <span class="math-inline">\{green\}Abierto</span>{reset} - Servicio: HTTP" ;;
-      2) echo -e "  ${yellow}Puerto <span class="math-inline">puerto\:</span>{reset} <span class="math-inline">\{green\}Abierto</span>{reset} - Servicio: SSH" ;;
-      3) echo -e "  ${yellow}Puerto <span class="math-inline">puerto\:</span>{reset} <span class="math-inline">\{green\}Abierto</span>{reset} - Servicio: FTP" ;;
+      0) echo -e "  ${yellow}Puerto $puerto:${reset} ${red}Cerrado${reset}" ;;
+      1) echo -e "  ${yellow}Puerto $puerto:${reset} ${green}Abierto${reset} - Servicio: HTTP" ;;
+      2) echo -e "  ${yellow}Puerto $puerto:${reset} ${green}Abierto${reset} - Servicio: SSH" ;;
+      3) echo -e "  ${yellow}Puerto $puerto:${reset} ${green}Abierto${reset} - Servicio: FTP" ;;
     esac
     sleep 0.1
-    echo -ne "  Progreso: $((<span class="math-inline">i \* 5\)\)%  \[</span>(printf '#%.0s' $(seq 1 $((<span class="math-inline">i / 5\)\)\)\)</span>(printf ' %.0s' $(seq 1 $((20 - (<span class="math-inline">i / 5\)\)\)\)\)\]\\r"
-done
-echo ""
-echo \-e "</span>{green} <span class="math-inline">\{escaner\} Escaneo completado\.</span>{reset}"
+    echo -ne "  Progreso: $(($i * 5))%\r"
+  done
+  echo ""
+  echo -e "${green} ${escaner} Escaneo completado.${reset}"
 }
 
 ataque_diccionario() {
-  echo -e "${yellow} <span class="math-inline">\{diccionario\} Realizando ataque de diccionario\.\.\.</span>{reset}"
+  echo -e "${yellow} ${diccionario} Realizando ataque de diccionario...${reset}"
   echo ""
-  # Simulación de ataque de diccionario con progreso, animación y suspenso
+  # Simulación de ataque de diccionario con progreso y animación
   for i in {1..100}; do
-    echo -ne "  Probando contraseñas... $((<span class="math-inline">i % 4\)\)  \\r"
-sleep 0\.01
-done
-echo ""
-resultado\=</span>((RANDOM % 5))
-  case <span class="math-inline">resultado in
-0\) echo \-e "</span>{red} <span class="math-inline">\{diccionario\} Ataque fallido\.</span>{reset}" ;;
-    1) echo -e "${green} ${diccionario} Contraseña encontrada: <span class="math-inline">\{cyan\}P@</span><span class="math-inline">wOrd\!</span>{reset}" ;;
-    2) echo -e "${green} ${diccionario} Contraseña encontrada: <span class="math-inline">\{cyan\}123456</span>{reset}" ;;
-    3) 
-       echo -e "${green} ${diccionario} Contraseña encontrada: <span class="math-inline">\{cyan\}admin</span>{reset}"
-       mostrar_calavera 
-       ;;
-    4)  
-       echo -e "${green} ${diccionario} Contraseña encontrada: <span class="math-inline">\{cyan\}secret</span>{reset}" 
-       ;; 
+    echo -ne "  Probando contraseñas... $(($i % 4))  \r"
+    sleep 0.01
+  done
+  echo ""
+  resultado=$((RANDOM % 3))
+  case $resultado in
+    0) echo -e "${red} ${diccionario} Ataque fallido.${reset}" ;;
+    1) echo -e "${green} ${diccionario} Contraseña encontrada: ${cyan}P@$$wOrd!${reset}" ;;
+    2) echo -e "${green} ${diccionario} Contraseña encontrada: ${cyan}123456${reset}" ;;
   esac
 }
 
 explotar_vulnerabilidad() {
-  echo -e "${red} <span class="math-inline">\{exploit\} Explotando vulnerabilidad\.\.\.</span>{reset}"
+  echo -e "${red} ${exploit} Explotando vulnerabilidad...${reset}"
   echo ""
-  # Simulación de explotación con mensajes de progreso, suspenso y detalles técnicos
-  echo "  Analizando el sistema objetivo..."
+  # Simulación de explotación con mensajes de progreso y suspenso
+  echo "  Analizando vulnerabilidades..."
   sleep 1
-  echo "  Identificando vulnerabilidades..."
-  sleep 2
   echo "  Encontrando exploit adecuado..."
   sleep 1
-  echo "  [<span class="math-inline">\{green\}OK</span>{reset}]  Vulnerabilidad encontrada: CVE-2023-1234"
-  sleep 1
-  echo "  Construyendo payload..."
-  sleep 2
   echo "  Inyectando payload..."
-  sleep 3
+  sleep 2
   echo "  Escalando privilegios..."
   sleep 1
-  echo "  [<span class="math-inline">\{green\}OK</span>{reset}]  Acceso al sistema obtenido."
+  echo "  Tomando control del sistema..."
   sleep 1
-  echo -e "${red} <span class="math-inline">\{exploit\} Vulnerabilidad explotada con éxito\.</span>{reset}"
+  echo -e "${red} ${exploit} Vulnerabilidad explotada con éxito.${reset}"
 }
 
 escalar_privilegios() {
-  echo -e "${purple} <span class="math-inline">\{privilegios\} Escalando privilegios\.\.\.</span>{reset}"
+  echo -e "${purple} ${privilegios} Escalando privilegios...${reset}"
   echo ""
-  # Simulación de escalada de privilegios con diferentes métodos y detalles técnicos
+  # Simulación de escalada de privilegios con diferentes métodos
   metodo=$((RANDOM % 3))
-  case <span class="math-inline">metodo in
-0\) echo "  Usando exploit de kernel\.\.\." 
-sleep 1
-echo "  \[</span>{green}OK${reset}]  Exploit ejecutado."
-       sleep 1
-       echo "  Elevando permisos..."
-       ;;
-    1) echo "  Aprovechando vulnerabilidad de configuración..."
-       sleep 1
-       echo "  [<span class="math-inline">\{green\}OK</span>{reset}]  Vulnerabilidad encontrada."
-       sleep 1
-       echo "  Modificando permisos..." 
-       ;;
-    2) echo "  Inyectando código en proceso privilegiado..." 
-       sleep 1
-       echo "  [<span class="math-inline">\{green\}OK</span>{reset}]  Código inyectado."
-       sleep 1
-       echo "  Tomando control del proceso..." 
-       ;;
+  case $metodo in
+    0) echo "  Usando exploit de kernel..." ;;
+    1) echo "  Aprovechando vulnerabilidad de configuración..." ;;
+    2) echo "  Inyectando código en proceso privilegiado..." ;;
   esac
   sleep 2
-  echo "  [<span class="math-inline">\{green\}OK</span>{reset}]  Acceso root obtenido."
+  echo "  Obteniendo acceso root..."
   sleep 1
-  echo -e "${purple} <span class="math-inline">\{privilegios\} Privilegios escalados con éxito\.</span>{reset}"
+  echo -e "${purple} ${privilegios} Privilegios escalados con éxito.${reset}"
 }
 
 ocultar_rastro() {
-  echo -e "${blue} <span class="math-inline">\{ocultar\} Ocultando rastro\.\.\.</span>{reset}"
+  echo -e "${blue} ${ocultar} Ocultando rastro...${reset}"
   echo ""
-  # Simulación de ocultación de rastro con detalles y barra de progreso
-  local tareas=("Borrando logs del sistema..." 
-                "Eliminando archivos temporales..." 
-                "Limpiando historial de comandos..." 
-                "Desactivando registro de actividad..." 
-                "Sobrescribiendo espacio libre en disco...")
-  for i in {0..4}; do
-    echo -ne "  ${tareas[$i]}\r"
-    sleep 1
-    echo -ne "  ${tareas[<span class="math-inline">i\]\} \[</span>(printf '#%.0s' $(seq 1 <span class="math-inline">\(\(</span>((i + 1)) * 20))))$(printf ' %.0s' $(seq 1 $((100 - ((<span class="math-inline">i \+ 1\)\) \* 20\)\)\)\)\]\\r"
-sleep 1
-done
-echo ""
-echo \-e "</span>{blue} <span class="math-inline">\{ocultar\} Rastro ocultado con éxito\.</span>{reset}"
+  # Simulación de ocultación de rastro con detalles
+  echo "  Borrando logs del sistema..."
+  sleep 0.5
+  echo "  Eliminando archivos temporales..."
+  sleep 0.5
+  echo "  Limpiando historial de comandos..."
+  sleep 0.5
+  echo "  Desactivando registro de actividad..."
+  sleep 0.5
+  echo "  Sobrescribiendo espacio libre en disco..."
+  sleep 1
+  echo -e "${blue} ${ocultar} Rastro ocultado con éxito.${reset}"
 }
 
 obtener_info_sistema() {
-  echo -e "${cyan} <span class="math-inline">\{info\} Obteniendo información del sistema\.\.\.</span>{reset}"
+  echo -e "${cyan} ${info} Obteniendo información del sistema...${reset}"
   echo ""
-  # Mostrar información detallada del sistema con formato
+  # Mostrar información detallada del sistema
   echo "  Nombre de host: $(hostname)"
   echo "  Dirección IP: $(hostname -I)"
   echo "  Sistema operativo: $(uname -o)"
@@ -247,102 +192,86 @@ obtener_info_sistema() {
   echo "  Número de CPUs: $(nproc)"
   echo "  Memoria RAM total: $(free -h | awk '/^Mem/ {print $2}')"
   echo "  Espacio en disco: $(df -h | awk '$NF=="/"{printf "Disco: %d/%d GB (%s)\n", $3,$2,$5}')"
-  echo "  Usuario actual: $USER"
-  echo "  Shell actual: <span class="math-inline">SHELL"
-echo ""
-\}
-ataque\_ddos\(\) \{
-echo \-e "</span>{red} <span class="math-inline">\{ddos\} Ataque DDoS\.\.\.</span>{reset}"
   echo ""
-  # Simulación de ataque DDoS con intensidad variable y detalles
+}
+
+ataque_ddos() {
+  echo -e "${red} ${ddos} Simulando ataque DDoS...${reset}"
+  echo ""
+  # Simulación de ataque DDoS con intensidad variable
   intensidad=$((RANDOM % 100 + 1))
-  echo "  Intensidad del ataque: <span class="math-inline">intensidad%"
-echo "  Seleccionando objetivo\.\.\."
-sleep 1
-echo "  \[</span>{green}OK${reset}]  Objetivo adquirido: 192.168.1.100"
-  sleep 1
+  echo "  Intensidad del ataque: $intensidad%"
   echo "  Enviando paquetes al objetivo..."
   sleep 1
   echo "  Incrementando tráfico de red..."
   sleep 1
   echo "  Sobrecargando el servidor..."
   sleep 2
-  if [[ <span class="math-inline">intensidad \-gt 70 \]\]; then
-echo \-e "</span>{red} <span class="math-inline">\{ddos\} Ataque DDoS exitoso\. Objetivo fuera de línea\.</span>{reset}"
+  if [[ $intensidad -gt 70 ]]; then
+    echo -e "${red} ${ddos} Ataque DDoS exitoso. Objetivo fuera de línea.${reset}"
   else
-    echo -e "${yellow} <span class="math-inline">\{ddos\} Ataque DDoS mitigado por el objetivo\.</span>{reset}"
+    echo -e "${yellow} ${ddos} Ataque DDoS mitigado por el objetivo.${reset}"
   fi
 }
 
 instalar_keylogger() {
-  echo -e "${yellow} <span class="math-inline">\{keylogger\} Instalando keylogger\.\.\.</span>{reset}"
+  echo -e "${yellow} ${keylogger} Simulando instalación de keylogger...${reset}"
   echo ""
-  # Simulación de instalación de keylogger con opciones y detalles
+  # Simulación de instalación de keylogger con opciones
   echo "  Seleccionando tipo de keylogger:"
   echo "    1. Basado en kernel"
   echo "    2. Basado en API"
   echo "    3. Basado en hardware"
   read -p "  Elige una opción: " tipo_keylogger
   echo ""
-  echo "  [<span class="math-inline">\{green\}OK</span>{reset}]  Keylogger seleccionado."
-  sleep 1
-  echo "  Copiando archivos..."
-  sleep 1
-  echo "  Instalando dependencias..."
+  echo "  Instalando keylogger..."
   sleep 2
   echo "  Configurando keylogger..."
   sleep 1
   echo "  Ocultando keylogger..."
   sleep 1
-  echo -e "${yellow} <span class="math-inline">\{keylogger\} Keylogger instalado\.</span>{reset}"
+  echo -e "${yellow} ${keylogger} Keylogger instalado (simulado).${reset}"
 }
 
 crear_pagina_phishing() {
-  echo -e "${red} <span class="math-inline">\{phishing\} Creando página de phishing\.\.\.</span>{reset}"
+  echo -e "${red} ${phishing} Simulando creación de página de phishing...${reset}"
   echo ""
-  # Simulación de creación de página de phishing con selección de objetivo y detalles
+  # Simulación de creación de página de phishing con selección de objetivo
   echo "  Selecciona un objetivo:"
   echo "    1. Banco"
   echo "    2. Red social"
   echo "    3. Correo electrónico"
   read -p "  Elige una opción: " objetivo_phishing
   echo ""
-  echo "  [<span class="math-inline">\{green\}OK</span>{reset}]  Objetivo seleccionado."
-  sleep 1
   echo "  Clonando página web..."
   sleep 1
   echo "  Configurando formulario de captura..."
   sleep 1
   echo "  Añadiendo elementos de ingeniería social..."
   sleep 1
-  echo "  [<span class="math-inline">\{green\}OK</span>{reset}]  Página de phishing creada."
-  sleep 1
-  echo "  URL de la página: <span class="math-inline">\{cyan\}http\://mi\-pagina\-falsa\.com</span>{reset}"
+  echo -e "${red} ${phishing} Página de phishing creada (simulada).${reset}"
 }
 
 hackear_wifi() {
-  echo -e "${yellow} <span class="math-inline">\{wifi\} Hackeando red WiFi\.\.\.</span>{reset}"
+  echo -e "${yellow} ${wifi} Simulando hackeo de red WiFi...${reset}"
   echo ""
-  # Simulación de hackeo de WiFi con diferentes métodos, detalles y animación
-  mostrar_animacion_escaneo
-  echo ""
+  # Simulación de hackeo de WiFi con diferentes métodos
   metodo=$((RANDOM % 3))
-  case <span class="math-inline">metodo in
-0\) echo "  Usando ataque de diccionario contra WPS\.\.\." ;;
-1\) echo "  Explotando vulnerabilidad en el router\.\.\." ;;
-2\) echo "  Realizando ataque Man\-in\-the\-Middle\.\.\." ;;
-esac
-sleep 2
-echo "  \[</span>{green}OK${reset}]  Contraseña de la red obtenida."
+  case $metodo in
+    0) echo "  Usando ataque de diccionario contra WPS..." ;;
+    1) echo "  Explotando vulnerabilidad en el router..." ;;
+    2) echo "  Realizando ataque Man-in-the-Middle..." ;;
+  esac
+  sleep 2
+  echo "  Obteniendo contraseña de la red..."
   sleep 1
-  contrasena_wifi=<span class="math-inline">\(generar\_contrasena\)
-echo \-e "</span>{green} ${wifi} Contraseña de la red: ${cyan}<span class="math-inline">contrasena\_wifi</span>{reset}"
+  echo -e "${green} ${wifi} Contraseña de la red: ${cyan}W1f1S3gur@${reset}"
 }
 
 crear_malware() {
-  echo -e "${red} <span class="math-inline">\{malware\} Creando malware\.\.\.</span>{reset}"
+  echo -e "${red} ${malware} Simulando creación de malware...${reset}"
   echo ""
-  # Simulación de creación de malware con opciones, detalles y animación
+  # Simulación de creación de malware con opciones
   echo "  Selecciona un tipo de malware:"
   echo "    1. Virus"
   echo "    2. Gusano"
@@ -350,63 +279,71 @@ crear_malware() {
   echo "    4. Ransomware"
   read -p "  Elige una opción: " tipo_malware
   echo ""
-  echo "  [<span class="math-inline">\{green\}OK</span>{reset}]  Tipo de malware seleccionado."
-  sleep 1
   echo "  Escribiendo código malicioso..."
   sleep 1
   echo "  Empaquetando malware..."
   sleep 1
   echo "  Ofuscando código..."
   sleep 1
-  echo -e "${red} <span class="math-inline">\{malware\} Malware creado\.</span>{reset}"
+  echo -e "${red} ${malware} Malware creado (simulado).${reset}"
 }
 
 inyeccion_sql() {
-  echo -e "${blue} <span class="math-inline">\{sql\} Inyección SQL\.\.\.</span>{reset}"
+  echo -e "${blue} ${sql} Simulando inyección SQL...${reset}"
   echo ""
-  # Simulación de inyección SQL con ejemplos, detalles y animación
-  echo "  Buscando vulnerabilidades SQL..."
-  sleep 1
-  echo "  [<span class="math-inline">\{green\}OK</span>{reset}]  Vulnerabilidad encontrada."
-  sleep 1
+  # Simulación de inyección SQL con ejemplos
   echo "  Inyectando código SQL malicioso..."
   sleep 1
   echo "  Extrayendo datos de la base de datos..."
-  sleep 2
-  echo "  [<span class="math-inline">\{green\}OK</span>{reset}]  Datos obtenidos:"
+  sleep 1
+  echo "  Datos obtenidos:"
   echo "    - Nombres de usuario"
   echo "    - Contraseñas"
   echo "    - Información personal"
-  echo -e "${blue} <span class="math-inline">\{sql\} Inyección SQL exitosa\.</span>{reset}"
+  echo -e "${blue} ${sql} Inyección SQL exitosa (simulada).${reset}"
 }
 
 ingenieria_social() {
-  echo -e "${yellow} ${social} Ingeniería social...${reset}"
+  echo -e "${yellow} ${social} Simulando ingeniería social...${reset}"
   echo ""
-  # Simulación de ingeniería social con diferentes técnicas y detalles
+  # Simulación de ingeniería social con diferentes técnicas
   tecnica=$((RANDOM % 3))
   case $tecnica in
-    0) echo "  Enviando correo electrónico con enlace malicioso..." 
-       sleep 1
-       echo "  [${green}OK${reset}]  Correo electrónico enviado."
-       sleep 1
-       echo "  Esperando que la víctima haga clic en el enlace..." 
-       ;;
-    1) echo "  Creando perfil falso en redes sociales..." 
-       sleep 1
-       echo "  [${green}OK${reset}]  Perfil falso creado."
-       sleep 1
-       echo "  Agregando amigos y publicando contenido..."
-       ;;
-    2) echo "  Haciéndose pasar por personal de soporte técnico..." 
-       sleep 1
-       echo "  [${green}OK${reset}]  Llamada telefónica realizada."
-       sleep 1
-       echo "  Solicitando información confidencial..." 
-       ;;
-  esac  # <- Aquí estaba faltando la palabra clave `esac`
+    0) echo "  Enviando correo electrónico con enlace malicioso..." ;;
+    1) echo "  Creando perfil falso en redes sociales..." ;;
+    2) echo "  Haciéndose pasar por personal de soporte técnico..." ;;
+  esac
   sleep 2
-  echo "  [${green}OK${reset}]  Información confidencial obtenida."
+  echo "  Obteniendo información confidencial..."
   sleep 1
-  echo -e "${yellow} ${social} Ingeniería social exitosa.${reset}"
+  echo -e "${yellow} ${social} Ingeniería social exitosa (simulada).${reset}"
 }
+
+cifrar_archivos() {
+  echo -e "${purple} ${cifrado} Simulando cifrado de archivos...${reset}"
+  echo ""
+  # Simulación de cifrado de archivos
+  echo "  Seleccionando archivos a cifrar..."
+  sleep 1
+  echo "  Generando clave de cifrado..."
+  sleep 1
+  echo "  Cifrando archivos..."
+  sleep 2
+  echo -e "${purple} ${cifrado} Archivos cifrados (simulado).${reset}"
+}
+
+# Bucle principal
+
+mostrar_login
+
+while true; do
+  mostrar_menu
+  read -p "Selecciona una opción: " opcion
+
+  if [[ $opcion == 0 ]]; then
+    break
+  fi
+
+  ejecutar_accion $opcion
+  read -p "Presiona Enter para continuar..."
+done
